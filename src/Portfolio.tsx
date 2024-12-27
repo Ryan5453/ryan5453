@@ -194,18 +194,18 @@ const Portfolio: React.FC = () => {
       {/* Popup */}
       {showPopup && imageLoaded && (
         <div 
-          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4"
           onClick={() => setShowPopup(false)}
         >
           <div 
-            className="relative max-w-md bg-white rounded-2xl shadow-lg overflow-hidden"
+            className="relative w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
-              className="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors z-10"
+              className="absolute top-4 right-4 p-2 bg-orange-100 hover:bg-orange-200 text-orange-700 hover:text-orange-950 rounded-full transition-colors z-10"
               onClick={() => setShowPopup(false)}
             >
-              <X size={24} />
+              <X size={20} />
             </button>
             <img 
               src={tessaImage}
