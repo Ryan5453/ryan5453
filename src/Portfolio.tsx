@@ -66,27 +66,31 @@ const Portfolio: React.FC = () => {
       <div className="relative container max-w-2xl mx-auto px-6 py-12">
         {/* Header */}
         <div className="relative bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-8 border border-orange-100">
-          <div className="flex justify-between items-center">
-            <h1 
-              className="text-4xl font-bold text-orange-950 relative cursor-pointer"
-              onClick={() => setShowPopup(true)}
-            >
-              Ryan Fahey
-              <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-rose-400 rounded-full" />
-            </h1>
-            <div className="flex space-x-4">
-              <a href="https://github.com/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
-                <Github size={24} />
-              </a>
-              <a href="https://twitter.com/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
-                <Twitter size={24} />
-              </a>
-              <a href="https://linkedin.com/in/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
-                <Linkedin size={24} />
-              </a>
-              <a href="mailto:ryan@ryan.science" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
-                <Mail size={24} />
-              </a>
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <h1 
+                  className="text-3xl sm:text-4xl font-bold text-orange-950 relative cursor-pointer w-fit"
+                  onClick={() => setShowPopup(true)}
+                >
+                  Ryan Fahey
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-rose-400 rounded-full" />
+                </h1>
+                <div className="flex space-x-4">
+                  <a href="https://github.com/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
+                    <Github size={20} />
+                  </a>
+                  <a href="https://twitter.com/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
+                    <Twitter size={20} />
+                  </a>
+                  <a href="https://linkedin.com/in/Ryan5453" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
+                    <Linkedin size={20} />
+                  </a>
+                  <a href="mailto:ryan@ryan.science" className="text-orange-700 hover:text-orange-950 transition-colors transform hover:scale-110">
+                    <Mail size={20} />
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
 
