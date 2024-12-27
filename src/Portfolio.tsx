@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Music, Github, Linkedin, Twitter, AudioLines, Library } from 'lucide-react';
+import { Mail, Music, Github, Linkedin, Twitter, AudioLines, Library, X } from 'lucide-react';
 import floweryLogo from './assets/flowery.svg';
+import tessaImage from './assets/tessa.png';
 
-// Define interfaces for the Last.fm API response
 interface TrackImage {
   '#text': string;
   size: string;
@@ -27,6 +27,7 @@ interface Track {
 
 const Portfolio: React.FC = () => {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchTrack = async () => {
@@ -40,7 +41,10 @@ const Portfolio: React.FC = () => {
         console.error('Error fetching track:', error);
       }
     };
+
     fetchTrack();
+    const interval = setInterval(fetchTrack, 120000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -56,7 +60,10 @@ const Portfolio: React.FC = () => {
         {/* Header */}
         <div className="relative bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-8 border border-orange-100">
           <div className="flex justify-between items-center">
-            <h1 className="text-4xl font-bold text-orange-950 relative">
+            <h1 
+              className="text-4xl font-bold text-orange-950 relative cursor-pointer"
+              onClick={() => setShowPopup(true)}
+            >
               Ryan Fahey
               <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-rose-400 rounded-full" />
             </h1>
@@ -77,9 +84,14 @@ const Portfolio: React.FC = () => {
           </div>
 
           <div className="mt-8 space-y-4">
-            <p className="text-lg text-orange-900 leading-relaxed">
-              Hey! I'm Ryan, a software engineer based in Massachusetts, currently pursuing Computer Science at Northeastern University in Boston. When I'm not crafting code or diving into new technologies, you might find me lost in a good book or exploring the latest indie games.
-            </p>
+            <div className="space-y-4">
+              <p className="text-lg text-orange-900 leading-relaxed">
+                hey there! i'm ryan, a software engineer from massachusetts. i'm a northeastern university student currently on co-op, working as a computational modeling engineer at montai therapeutics while pursuing my b.s. in computer science.
+              </p>
+              <p className="text-lg text-orange-900 leading-relaxed">
+                i'm passionate about building scalable infrastructure and exploring the fascinating field of machine learning, especially in areas like text-to-speech, automatic speech recognition, and large language models. i find the intersection of these interests particularly fascinating.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -107,7 +119,7 @@ const Portfolio: React.FC = () => {
             </div>
 
             <div className="group bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-6 border border-orange-100 hover:border-orange-200 transition-all duration-300">
-              <a href="https://github.com/Ryan5453/music2text" className="block">
+              <a href="https://github.com/Ryan5453/SingingWhisper" className="block">
                 <div className="flex justify-between items-start">
                   <div className="flex items-center gap-2">
                     <AudioLines size={24} className="text-orange-700" />
@@ -132,7 +144,7 @@ const Portfolio: React.FC = () => {
                   <span className="text-sm text-orange-600 bg-orange-100 px-3 py-1 rounded-full">Upcoming</span>
                 </div>
                 <p className="mt-3 text-orange-800 leading-relaxed">
-                  A unified music catalogue that seamlessly integrates with major music streaming platforms. Search for songs, albums, or artists and get direct links to enjoy them on your preferred service. Leveraging SingingWhisper's lyric-based embedding technology for enhanced discovery. Stay tuned for the upcoming launch, featuring an intuitive web interface and a robust API for developers.
+                  A unified music catalogue that seamlessly integrates with major music streaming platforms. Search for songs, albums, or artists and get direct links to enjoy them on your preferred service. Powered by cutting-edge technology derived from SingingWhisper, SongData offers an unparalleled music discovery experience. SongData will feature an intuitive web interface and a robust API for developers upon its release.
                 </p>
               </a>
             </div>
@@ -153,11 +165,14 @@ const Portfolio: React.FC = () => {
             </h2>
             {currentTrack && (
               <div className="flex mt-4">
-                <img 
-                  src={currentTrack.image[3]['#text'] || "/api/placeholder/128/128"}
-                  alt="Album Art"
-                  className="w-24 h-24 rounded-xl object-cover shadow-md"
-                />
+                <div className="relative">
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-br from-orange-300 to-rose-300 blur-xl opacity-90 rounded-xl scale-100" />
+                  <img 
+                    src={currentTrack.image[3]['#text'] || "/api/placeholder/128/128"}
+                    alt="Album Art"
+                    className="w-24 h-24 rounded-xl object-cover relative hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
                 <div className="ml-4 flex flex-col justify-center">
                   <div className="font-medium text-orange-950">{currentTrack.name}</div>
                   <div className="text-orange-800 mt-1">{currentTrack.artist['#text']}</div>
@@ -168,6 +183,34 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Popup */}
+      {showPopup && (
+        <div 
+          className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+          onClick={() => setShowPopup(false)}
+        >
+          <div 
+            className="relative max-w-md bg-white rounded-2xl shadow-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              className="absolute top-4 right-4 text-white hover:text-orange-200 transition-colors z-10"
+              onClick={() => setShowPopup(false)}
+            >
+              <X size={24} />
+            </button>
+            <img 
+              src={tessaImage}
+              alt="Tessa"
+              className="w-full h-auto"
+            />
+            <div className="p-4 bg-white">
+              <p className="text-center text-orange-900 text-lg">Meet Tessa, my adorable dog!</p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
