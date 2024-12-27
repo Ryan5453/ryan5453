@@ -173,7 +173,7 @@ const Portfolio: React.FC = () => {
             {currentTrack && (
               <a href="https://last.fm/user/Ryan5453" className="block">
                 <div className="flex mt-4">
-                  <div className="relative">
+                  <div className="relative shrink-0">
                     <div className="absolute inset-0 -z-10 bg-gradient-to-br from-orange-300 to-rose-300 blur-xl opacity-90 rounded-xl scale-100" />
                     <img 
                       src={currentTrack.image[3]['#text'] || "/api/placeholder/128/128"}
@@ -181,10 +181,10 @@ const Portfolio: React.FC = () => {
                       className="w-24 h-24 rounded-xl object-cover relative hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  <div className="ml-4 flex flex-col justify-center">
-                    <div className="font-medium text-orange-950">{currentTrack.name}</div>
-                    <div className="text-orange-800 mt-1">{currentTrack.artist['#text']}</div>
-                    <div className="text-orange-700 mt-1">{currentTrack.album['#text']}</div>
+                  <div className="ml-4 flex flex-col justify-center min-w-0">
+                    <div className="font-medium text-orange-950 truncate">{currentTrack.name}</div>
+                    <div className="text-orange-800 mt-1 truncate">{currentTrack.artist['#text']}</div>
+                    <div className="text-orange-700 mt-1 truncate">{currentTrack.album['#text']}</div>
                   </div>
                 </div>
               </a>
