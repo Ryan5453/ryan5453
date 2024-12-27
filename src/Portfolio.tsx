@@ -96,7 +96,7 @@ const Portfolio: React.FC = () => {
                 hey there! i'm ryan, a software engineer from massachusetts. i'm a northeastern university student currently on co-op, working as a computational modeling engineer at montai therapeutics while pursuing my b.s. in computer science.
               </p>
               <p className="text-lg text-orange-900 leading-relaxed">
-                i'm passionate about building scalable infrastructure and exploring the fascinating field of machine learning, especially in areas like text-to-speech, automatic speech recognition, and large language models. i find the intersection of these interests particularly fascinating.
+                i'm passionate about building robust scalable infrastructure and exploring the fascinating field of machine learning, especially in areas like speech synthesis, automatic speech recognition, and large language models. i find the intersection of these interests particularly fascinating.
               </p>
             </div>
           </div>
@@ -171,21 +171,23 @@ const Portfolio: React.FC = () => {
               </span>
             </h2>
             {currentTrack && (
-              <div className="flex mt-4">
-                <div className="relative">
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-br from-orange-300 to-rose-300 blur-xl opacity-90 rounded-xl scale-100" />
-                  <img 
-                    src={currentTrack.image[3]['#text'] || "/api/placeholder/128/128"}
-                    alt="Album Art"
-                    className="w-24 h-24 rounded-xl object-cover relative hover:scale-105 transition-transform duration-300"
-                  />
+              <a href="https://last.fm/user/Ryan5453" className="block">
+                <div className="flex mt-4">
+                  <div className="relative">
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-br from-orange-300 to-rose-300 blur-xl opacity-90 rounded-xl scale-100" />
+                    <img 
+                      src={currentTrack.image[3]['#text'] || "/api/placeholder/128/128"}
+                      alt="Album Art"
+                      className="w-24 h-24 rounded-xl object-cover relative hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  <div className="ml-4 flex flex-col justify-center">
+                    <div className="font-medium text-orange-950">{currentTrack.name}</div>
+                    <div className="text-orange-800 mt-1">{currentTrack.artist['#text']}</div>
+                    <div className="text-orange-700 mt-1">{currentTrack.album['#text']}</div>
+                  </div>
                 </div>
-                <div className="ml-4 flex flex-col justify-center">
-                  <div className="font-medium text-orange-950">{currentTrack.name}</div>
-                  <div className="text-orange-800 mt-1">{currentTrack.artist['#text']}</div>
-                  <div className="text-orange-700 mt-1">{currentTrack.album['#text']}</div>
-                </div>
-              </div>
+              </a>
             )}
           </div>
         </div>
