@@ -28,6 +28,7 @@ interface Track {
 const Portfolio: React.FC = () => {
   const [currentTrack, setCurrentTrack] = useState<Track | null>(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   useEffect(() => {
     const fetchTrack = async () => {
@@ -45,6 +46,12 @@ const Portfolio: React.FC = () => {
     fetchTrack();
     const interval = setInterval(fetchTrack, 120000);
     return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = tessaImage;
+    img.onload = () => setImageLoaded(true);
   }, []);
 
   return (
@@ -185,7 +192,7 @@ const Portfolio: React.FC = () => {
       </div>
 
       {/* Popup */}
-      {showPopup && (
+      {showPopup && imageLoaded && (
         <div 
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
           onClick={() => setShowPopup(false)}
