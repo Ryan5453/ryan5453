@@ -56,7 +56,6 @@ const Portfolio: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-orange-50">
-      {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-64 h-64 bg-rose-100 rounded-full blur-3xl opacity-30 -translate-x-1/2 -translate-y-1/2" />
         <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-100 rounded-full blur-3xl opacity-30 translate-x-1/2 translate-y-1/2" />
@@ -64,7 +63,6 @@ const Portfolio: React.FC = () => {
       </div>
 
       <div className="relative container max-w-2xl mx-auto px-6 py-12">
-        {/* Header */}
         <div className="relative bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-8 border border-orange-100">
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-4">
@@ -106,7 +104,6 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
 
-        {/* Projects */}
         <div className="mt-12">
           <h2 className="text-2xl font-bold text-orange-950 mb-6 relative inline-block">
             Projects
@@ -144,7 +141,6 @@ const Portfolio: React.FC = () => {
               </a>
             </div>
 
-
             <div className="group bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-6 border border-orange-100 hover:border-orange-200 transition-all duration-300">
               <a href="https://songdata.org" className="block">
                 <div className="flex justify-between items-start">
@@ -164,7 +160,6 @@ const Portfolio: React.FC = () => {
           </div>
         </div>
 
-        {/* Now Playing Section */}
         <div className="mt-12">
           <div className="bg-white bg-opacity-70 backdrop-blur-lg rounded-2xl p-6 border border-orange-100">
             <h2 className="text-xl font-bold text-orange-950 flex items-center">
@@ -197,7 +192,6 @@ const Portfolio: React.FC = () => {
         </div>
       </div>
 
-      {/* Popup */}
       {showPopup && imageLoaded && (
         <div 
           className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50 p-4"
